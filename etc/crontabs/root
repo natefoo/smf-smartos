@@ -1,0 +1,14 @@
+
+## Entries below are added from /opt/custom/etc/crontabs/root
+
+# Note! SmartOS times are in UTC, we snapshot 1 (or 2) hours prior to the
+# backup times (in EST5EDT)
+
+# test toolshed backups on radegast occur at 11:00 PM EST5EDT
+0 2 * * * zones/nfsroot/backup/radegast/testshed@`date -u +\%Y\%m\%dT\%H\%M\%SZ`
+
+# main toolshed backups on radegast occur at 12:00 AM EST5EDT
+0 3 * * * zones/nfsroot/backup/radegast/mainshed@`date -u +\%Y\%m\%dT\%H\%M\%SZ`
+
+# postgres backups on radegast occur at 1:00 AM EST5EDT
+0 4 * * * zfs snapshot zones/nfsroot/backup/radegast/postgres@`date -u +\%Y\%m\%dT\%H\%M\%SZ`
